@@ -1,15 +1,11 @@
 const Stack = (() => {
-  const elementsKey = {};
-  const items = new WeakMap();
+  const items = new Array();
 
   class Stack {
-    constructor() {
-      items.set(elementsKey, []);
+    get _stack() {
+      return items;
     }
 
-    get _stack() {
-      return items.get(elementsKey);
-    }
     push(element) {
       this._stack.push(element);
     }
@@ -23,11 +19,11 @@ const Stack = (() => {
     }
 
     clear() {
-      items.set(elementsKey, []);
+      items.length = 0;
     }
 
     size() {
-      return items.get(elementsKey).length;
+      return items.length;
     }
   }
 
